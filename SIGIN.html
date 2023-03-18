@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sign In - Cinema Name</title>
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+<body>
+<div class="container">
+  <form action="login.php" method="post">
+    <h2>Sign In to cinimax</h2>
+    <p>Welcome back! Please sign in to access your account.</p>
+    <label for="username">Username or Email</label>
+    <input type="text" name="username" id="username" required>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" required>
+    <button type="submit">Sign In</button>
+    <p>Forgot your password? <a href="#">Reset it here</a>.</p>
+  </form>
+  <div class="signup-promo">
+    <h3>New to CINIMAX?</h3>
+    <p>Sign up for an account today to enjoy exclusive benefits, including:</p>
+    <ul>
+      <li>Access to early ticket sales and special events</li>
+      <li>Discounts on concessions and merchandise</li>
+      <li>Free upgrades to premium seating</li>
+    </ul>
+    <a href="signup.php" class="cta-button">Sign Up Now</a>
+  </div>
+</div>
+<script>
+  // Add a click event listener to the "Reset it here" link
+  var resetLink = document.querySelector('a[href="#"]');
+  resetLink.addEventListener('click', function(event) {
+    event.preventDefault(); // Prevent the default behavior of the link
+    alert("Password reset functionality is not available at the moment. Please try again later."); // Show a message to the user
+  });
+  // Add a focus event listener to the username input field
+  var usernameInput = document.getElementById('username');
+  usernameInput.addEventListener('focus', function(event) {
+    event.target.classList.add('highlight'); // Add a CSS class to the input field
+  });
+
+  // Add a blur event listener to the username input field
+  usernameInput.addEventListener('blur', function(event) {
+    event.target.classList.remove('highlight'); // Remove the CSS class from the input field
+  });
+</script>
+
+</body>
+</html>
