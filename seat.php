@@ -65,7 +65,7 @@
     </tr>
     <tr>
       <td>Row 1</td>
-      <td><input type="checkbox" name="seats[]" value="A1" <?php if(!isAvailable('A1')) echo 'disabled'; ?>></td>
+      <input type="checkbox" name="seats[]" value="A1" <?php if(!isAvailable('A1')) echo 'disabled'; ?>>
       <td><input type="checkbox" name="seats[]" value="A2" <?php if(!isAvailable('A2')) echo 'disabled'; ?>></td>
       <td><input type="checkbox" name="seats[]" value="A3" <?php if(!isAvailable('A3')) echo 'disabled'; ?>></td>
       <td><input type="checkbox" name="seats[]" value="A4" <?php if(!isAvailable('A4')) echo 'disabled'; ?>></td>
