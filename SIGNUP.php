@@ -33,11 +33,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Generate a unique ID for the user
     $cus_ID = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
-    echo $cus_ID;
+    $hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Execute the insert query to store the user's information in the database
     $stmt = $db->prepare("INSERT INTO customers (cus_ID, cus_name, cus_email, cus_question1, cus_question2, cus_answer1, cus_answer2, cus_phone, cus_pw) VALUES (?,?,?,?,?,?,?,?,?);");
-    $stmt->bind_param("sssssssss", $cus_ID, $name, $email, $question1, $question2, $answer1, $answer2, $phone, $password);
+    $stmt->bind_param("sssssssss", $cus_ID, $name, $email, $question1, $question2, $answer1, $answer2, $phone, $hash);
     $stmt->execute();
 
     // Get the result set
