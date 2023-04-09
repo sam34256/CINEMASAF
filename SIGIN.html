@@ -36,7 +36,7 @@
     <input type="password" name="password" id="password" required>
     <!--Sign in button takes you to signin.php-->
     <a href="SIGNIN.php" class="cta-button">Sign In</a>
-    <p>Forgot your password? <a href="#">Reset it here</a>.</p>
+    <p>Forgot your password? <a href="RESET.html">Reset it here</a>.</p>
   </form>
   <div class="signup-promo">
     <h3>New to CINIMASAF?</h3>
@@ -50,12 +50,7 @@
   </div>
 </div>
 <script>
-  // Add a click event listener to the "Reset it here" link
-  var resetLink = document.querySelector('a[href="#"]');
-  resetLink.addEventListener('click', function(event) {
-    event.preventDefault(); // Prevent the default behavior of the link
-    alert("Password reset functionality is not available at the moment. Please try again later."); // Show a message to the user
-  });
+ 
   // Add a focus event listener to the username input field
   var usernameInput = document.getElementById('username');
   usernameInput.addEventListener('focus', function(event) {
