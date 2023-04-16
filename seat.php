@@ -1,6 +1,100 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Sign In - Cinema Name</title>
+  <!--Pulls the css style sheet-->
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<style>
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+div.center {
+  text-align: center;  
+  }
+
+.hero{
+  width:100vw;
+  height:40vh;
+}
+
+.nav-buttons{
+  position: absolute;
+  top: 22px;
+  right: 16px;
+}
+
+.posters{
+
+    height: 85%;
+    width: 30%;
+}
+
+    table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+tr {
+  border: 1px solid #ddd;
+}
+</style>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CINIMAX Theatres - Welcome to the Movies</title>
+  <link rel="stylesheet" href="css\main.css">
+</head>
+<body>
+<header>
+  <nav style="background: #8b4545;;">
+    <div class="container" >
+      <div class="logo">
+        <div class = "center">
+        <a href="index.html">
+        <img src="img/movie-theater.png" alt="Logo">
+        </a></div></a>
+      </div>
+      <div class="nav-items">
+        <ul>
+          <li><a href="nowplaying.html">Now Playing</a></li>
+          <li><a href="comingsoon.html">Coming Soon</a></li>
+          <li><a href="concession.html">Concession Menu</a></li>
+          <li><a href="ABOUTUS.html">About Us</a></li>
+          <li><a href="SIGIN.html" class="btn btn-secondary">Sign In</a></li>
+          <li><a href="seat.php" class="btn btn-primary">Get Tickets</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</header>
+</body>
+
+<head>
   <title>Movie Ticket Booking</title>
   <style>
     body {
