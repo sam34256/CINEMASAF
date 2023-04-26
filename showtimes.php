@@ -59,7 +59,7 @@ tr {
 </head>
 <body>
 <header>
-  <nav style="background: #8b4545;">
+  <nav style="background: #8b4545;;">
     <div class="container" >
       <div class="logo">
         <div class = "center">
@@ -83,6 +83,7 @@ tr {
   </nav>
 </header>
 </body>
+
 
 <?php
 // Connect to the database
@@ -143,3 +144,4 @@ mysqli_close($db);
     </div>
   </div>
 </footer>
+
