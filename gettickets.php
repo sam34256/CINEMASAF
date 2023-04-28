@@ -119,34 +119,36 @@ $showtimes = mysqli_fetch_all($result, MYSQLI_ASSOC);
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    //session_start();
+
+// session_start();
     
-    // Check if the user is authenticated
-    //if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
-        // If the user is not authenticated, redirect them to the login page
-      //  header('Location: SIGIN.html');
-      //  exit;
-   // }
+//     // Check if the user is authenticated
+// if (!isset($_SESSION['authenticated']) || $_SESSION['authenticated'] !== true) {
+//     //If the user is not authenticated, redirect them to the login page
+//        header('Location: SIGIN.html');
+//        exit;
+//    }
   
     // Get user input
   $movie_id = $_POST['movie_id'];
   $showtime_id = $_POST['showtime_id'];
   $quantity = $_POST['quantity'];
   //$cus_id = $_SESSION['cus_ID'];
-  $cus_id = uniqid();
+  $cus_id = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
+  $ticket_ID = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
 
-  //verifys that user inputted a number
-  if(!is_numeric($quantity)){
-    $error_msg = "Please enter a number for the quantity of tickets";
-    trigger_error($error_msg, E_USER_ERROR);
-  }
+  // //verifys that user inputted a number
+  // if(!is_numeric($quantity)){
+  //   $error_msg = "Please enter a number for the quantity of tickets";
+  //   trigger_error($error_msg, E_USER_ERROR);
+  // }
 
   //gets the total cost of tickets
   $total = $quantity * 9.99;
 
 
   // Create new ticket record
-  $sql = "INSERT INTO tickets (cus_ID, showtime_ID, total, quantity) VALUES ('$cus_id', '$showtime_id', '$total', '$quantity')";
+  $sql = "INSERT INTO tickets (ticket_ID, cus_ID, showtime_ID, total, quantity) VALUES ('$ticket_ID','$cus_id', '$showtime_id', '$total', '$quantity')";
   mysqli_query($conn, $sql);
 
   // Update number of seats in theater
@@ -158,15 +160,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $show_datetime = mysqli_fetch_array(mysqli_query($conn, "SELECT CONCAT(showDate, ' ', showTime) AS show_datetime FROM showtimes WHERE showtime_ID = '$showtime_id'"))['show_datetime'];
   $confirmation_msg = "You have reserved $quantity tickets for the movie $movie_name on $show_datetime. Total cost: $" . number_format($total, 2);
 
-  echo $confirmation_msg;
+  echo '<script>alert("' . $confirmation_msg . '");</script>';
 
-  mysqli_close($db);
+  mysqli_close($conn);
 
 }
 ?>
 
 
-<form method="post">
+<form method="post" action = "gettickets.php">
   <label for="movie_id">Select a movie:</label>
   <select name="movie_id" required>
     <?php foreach ($movies as $movie): ?>

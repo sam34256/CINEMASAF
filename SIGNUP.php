@@ -29,14 +29,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   }
 
     // Create a new database connection
-    $db = mysqli_connect('localhost', 'ics325sp235008', '3428', 'ics325sp235008');
+    $db_host = 'localhost';
+    $db_name = 'ics325sp235008';
+    $db_user = 'ics325sp235008';
+    $db_pass = '3428';
+    $db = mysqli_connect($db_host, $db_user, $db_pass, $db_name);
 
     // Generate a unique ID for the user
     $cus_ID = str_pad(mt_rand(0, 999999), 6, '0', STR_PAD_LEFT);
     $hash = password_hash($password, PASSWORD_DEFAULT);
 
     // Execute the insert query to store the user's information in the database
-    $stmt = $db->prepare("INSERT INTO customers (cus_ID, cus_name, cus_email, cus_question1, cus_question2, cus_answer1, cus_answer2, cus_phone, cus_pw) VALUES (?,?,?,?,?,?,?,?,?);");
+    $stmt = $db->prepare("INSERT INTO customers (cus_ID, cus_name, cus_email, cus_question1, cus_question2, cus_answer1, cus_answer2, ticketHistory, cus_phone, cus_pw) VALUES (?,?,?,?,?,?,?,NULL,?,?);");
     $stmt->bind_param("sssssssss", $cus_ID, $name, $email, $question1, $question2, $answer1, $answer2, $phone, $hash);
     $stmt->execute();
 
@@ -47,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
     $db->close();
     // Redirect the user to a success page
-    header('Location: thankyou.html');
+    header('Location: thankyou.php');
     exit;
 
   
